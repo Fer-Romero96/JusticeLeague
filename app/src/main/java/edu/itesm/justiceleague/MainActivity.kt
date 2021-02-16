@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
 
         println(jl)
 
-        println("Hola")
+        println("Adios")
 
         println(batman)
     }
