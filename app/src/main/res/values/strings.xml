@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">JusticeLeague</string>
+    <string name="zack_snyder_jl">Zack Snyder JL</string>
+    <string name="nombre">Nombre</string>
+    <string name="name">Name</string>
+    <string name="correo">Correo</string>
+    <string name="m_vil">Móvil</string>
+    <string name="edad">Edad</string>
+</resources>
