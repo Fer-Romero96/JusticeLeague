@@ -2,29 +2,54 @@ package edu.itesm.justiceleague
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
+import android.view.View
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    val jl = mutableListOf<SuperHeroe>() // Genera la lista inmutable
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        init()
     }
 
-    data class SuperHeroe(val nombre: String, val mail: String, val movil: String, val edad: Int)
-    fun main() {
-        println("Hello, world!!!")
+    fun init(){
+        editTextTextPersonName.addTextChangedListener(object: TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
 
-        val batman = SuperHeroe("Bruce Wayne","batman@itesm.mx","5536776645",25)
+            }
 
-        // Tenemos que ponerle el tipo de dato en este caso SuperHeroe
-        val jl = mutableListOf<SuperHeroe>()
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-        jl.add(batman)
-        jl.add(SuperHeroe("CK","super","77",45))
+            }
 
-        println(jl)
+            override fun afterTextChanged(s: Editable?) {
+                button.text = s.toString()
+            }
 
-        println("Adios")
+        })
+    }
 
-        println(batman)
+    fun guarda(view: View){
+        val superHeroe = SuperHeroe(editTextTextPersonName.text.toString())
+        superHeroe.movil = editTextPhone.text.toString()
+        superHeroe.mail = editTextTextEmailAddress.text.toString()
+        superHeroe.edad = editTextNumberSigned.text.toString().toInt()
+
+        Log.i("edu.itesm.daec.jl", superHeroe.toString())
+
+        jl.add(superHeroe)
+
+        Log.i("edu.itesm.daec.jl", jl.toString())
+        Log.i("edu.itesm.daec.jl", jl.sumBy { it.edad }.toString())
+
+
+
+
+
     }
 }
